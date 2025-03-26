@@ -1,0 +1,51 @@
+﻿<Window x:Class="ECDL.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ECDL"
+        mc:Ignorable="d"
+        Title="ECDL" Height="450" Width="800" FontSize="13">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid AutoGenerateColumns="False" SelectionMode="Single" Margin="10" ItemsSource="{Binding Vizsgazok}" SelectedItem="{Binding SelectedVizsgazo, NotifyOnSourceUpdated=True}" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Név" Width="*" Binding="{Binding Nev}"/>
+                <DataGridTextColumn Header="Vizsgatípus" Width="*" Binding="{Binding Vizsgatipus.Modul}"/>
+                <DataGridTextColumn Header="Eredmény %" Width="*" Binding="{Binding Eredmeny}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="1" x:Name="Torles_Button" Content="Törlés" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Height="25" FontSize="12" Click="Torles_Button_Click"/>
+
+        <GroupBox Grid.Column="1" Header="Új vizsgázó" Margin="10">
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Név" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+                <TextBox x:Name="Nev_TextBlock" Grid.Row="1" Grid.Column="1" Height="30" Width="230" VerticalContentAlignment="Center" HorizontalAlignment="Center"/>
+                <Label Content="Vizsga típus" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+                <ComboBox x:Name="VizsgaT_ComboBox" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="230" ItemsSource="{Binding Vizsgatipusok}" DisplayMemberPath="Modul"/>
+                <Label Content="Eredmény %" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+                <TextBox x:Name="Eredmeny_TextBox" Grid.Row="3" Grid.Column="1" Height="30" Width="230" VerticalContentAlignment="Center" HorizontalAlignment="Center"/>
+                <Button x:Name="Mentes_Button" Content="Mentés" Grid.Row="4" Grid.Column="1" Width="100" Height="25" FontSize="12" Click="Mentes_Button_Click"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

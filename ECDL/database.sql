@@ -1,0 +1,130 @@
+﻿CREATE DATABASE ecdl
+	CHARACTER SET utf8mb4
+	COLLATE utf8mb4_general_ci;
+
+USE ecdl;
+
+CREATE TABLE ecdl.vizsgatipus (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  modul VARCHAR(255) DEFAULT NULL,
+  PRIMARY KEY (id)
+)
+ENGINE = INNODB,
+CHARACTER SET utf8mb4,
+COLLATE utf8mb4_general_ci;
+
+CREATE TABLE ecdl.vizsgazok (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  nev VARCHAR(255) NOT NULL,
+  vizsgatipusId INT(11) NOT NULL,
+  eredmeny INT(11) NOT NULL,
+  PRIMARY KEY (id)
+)
+ENGINE = INNODB,
+CHARACTER SET utf8mb4,
+COLLATE utf8mb4_general_ci;
+
+ALTER TABLE ecdl.vizsgazok 
+  ADD CONSTRAINT FK_vizsgazok_vizsgatipusId FOREIGN KEY (vizsgatipusId)
+    REFERENCES ecdl.vizsgatipus(id) ON DELETE NO ACTION;
+
+INSERT INTO ecdl.vizsgatipus (modul) VALUES
+('Word'),
+('Powerpoint'),
+('Excel'),
+('Alapismeretek'),
+('Access'),
+('On-line'),
+('Webszerkesztés');
+
+INSERT INTO ecdl.vizsgazok (nev, vizsgatipusId, eredmeny) VALUES
+('Németh Mihály', 1, 56),
+('Lukács Mónika', 2, 84),
+('Szűcs Sándor', 3, 44),
+('Varga Imre', 4, 44),
+('Farkas József', 5, 92),
+('Deák Eszter', 2, 84),
+('Sipos Krisztián', 5, 52),
+('Lakatos János', 2, 64),
+('Szabó István', 4, 84),
+('Boros Gyula', 4, 92),
+('Fazekas Norbert', 4, 48),
+('Boros Krisztián', 1, 76),
+('Kiss Károly', 2, 44),
+('Fülöp Zsuzsanna', 5, 88),
+('Szilágyi Viktória', 3, 52),
+('Sipos Tímea', 2, 64),
+('Papp Szabolcs', 2, 40),
+('Gulyás János', 4, 80),
+('Fodor Sándor', 6, 84),
+('Antal Gábor', 4, 100),
+('Szűcs János', 6, 56),
+('Farkas Csaba', 6, 76),
+('Horváth Mihály', 4, 40),
+('Balogh Csaba', 6, 68),
+('Gál Szabolcs', 4, 72),
+('Kis Csaba', 3, 60),
+('Hegedűs Gabriella', 3, 40),
+('Somogyi István', 6, 60),
+('Szalai Katalin', 3, 40),
+('Balogh Miklós', 4, 100),
+('Török István', 4, 84),
+('Deák Krisztina', 3, 76),
+('Kovács György', 2, 88),
+('Pintér Lajos', 3, 88),
+('Varga Péter', 1, 88),
+('Mészáros Norbert', 1, 76),
+('Kovács Csaba', 4, 64),
+('Szabó Zoltán', 5, 56),
+('Tóth Gyula', 1, 88),
+('Németh Erzsébet', 5, 92),
+('Sipos György', 4, 96),
+('Gulyás Imre', 7, 52),
+('Lukács Lajos', 3, 100),
+('Magyar Szabolcs', 3, 100),
+('Fülöp Tibor', 5, 44),
+('Juhász Tibor', 2, 76),
+('Balázs Károly', 7, 52),
+('Varga Andrea', 1, 100),
+('Király Éva', 1, 48),
+('Szűcs Edit', 2, 92),
+('Szilágyi Róbert', 3, 100),
+('Simon Erzsébet', 5, 60),
+('Katona András', 4, 56),
+('Szűcs Péter', 2, 52),
+('Fehér József', 5, 72),
+('Sipos Tímea', 7, 80),
+('Simon Zsuzsanna', 1, 96),
+('Nagy Tibor', 2, 100),
+('Kiss János', 2, 92),
+('Hegedűs András', 4, 72),
+('Tóth József', 7, 60),
+('Németh Viktória', 3, 76),
+('Simon Mónika', 3, 88),
+('Fekete Sándor', 2, 92),
+('Nagy Erika', 1, 88),
+('Mészáros Imre', 1, 48),
+('Pintér János', 1, 96),
+('Fekete Zsolt', 7, 96),
+('Deák Imre', 3, 48),
+('Szabó Róbert', 3, 48),
+('Szilágyi Tamás', 5, 80),
+('Fekete Erzsébet', 7, 56),
+('Fazekas Krisztián', 5, 48),
+('Nagy Ferenc', 5, 76),
+('Somogyi Gyula', 5, 60),
+('Török Gabriella', 5, 84),
+('Szalai Eszter', 7, 88),
+('Katona Mihály', 7, 84),
+('Király Viktória', 5, 52),
+('Fazekas Tibor', 6, 56),
+('Szilágyi Mónika', 7, 100),
+('Antal Szilvia', 4, 64),
+('Lakatos László', 3, 52),
+('Fülöp Szilvia', 7, 60),
+('László Zsuzsanna', 4, 48),
+('Fülöp László', 2, 68),
+('Mészáros Ildikó', 3, 80),
+('Bíró Péter', 5, 100),
+('Kovács Ildikó', 2, 44),
+('Török Ferenc', 4, 100);
